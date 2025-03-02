@@ -28,6 +28,17 @@ def dates():
 
 @app.route('/input', methods=["GET", "POST"])
 def input():
+    if request.method == 'POST':
+        date = request.form['date']
+        roomsCount = request.form['roomsCount']
+        windowsInRoom = request.form['windowsInRoom']
+        windowsLight = request.form['windowsLight']
+
+        data = {date: {"windows": [[[1, True], [1, True]], [[2, True], [
+            3, False]]], "rooms_cnt": 6, "has_light": [3, 2, 4, 3], "is_correct": True}, }
+
+        return render_template('days.html', data=data)
+
     return render_template('input.html')
 
 

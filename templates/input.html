@@ -1,0 +1,26 @@
+{% extends "index.html" %}
+
+
+{% block head %}
+
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/input.css') }}">
+
+{% endblock %}
+
+
+{% block children_page %}
+
+<form action="{{ url_for('input') }}" method="post">
+    <p>Дата: </p>
+    <input class="input" type="date" name="date">
+    <p>Комнат на этаже</p>
+    <input class="input" type="text" name="roomsCount">
+    <p>Количество окон в каждой комнате</p>
+    <input class="input" type="text" name="windowsInRoom">
+    <p>Свет в окнах</p>
+    <input class="input" type="text" name="windowsLight">
+    <button id="confirm">Применить</button>
+</form>
+
+{% endblock %}
