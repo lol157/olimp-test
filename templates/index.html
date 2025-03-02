@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block style %}
+{% endblock %}
+
+{% block content %}
+    <header>
+        <a href="./dates">даты</a>
+        <a href="./input">ввод</a>
+    </header>
+    
+    <body>
+        {% block children_page %}
+        {% endblock %}
+    </body>
+{% endblock %}

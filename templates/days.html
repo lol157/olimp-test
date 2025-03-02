@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+
+{% block style %}
+{% endblock %}
+
+{% block children_page %}
+
+{% for date, date_data in data.items() %}
+    <div>
+        <h3>дата: {{date}}</h3>
+        {% for floor in date_data["windows"] %}
+            {% for wdw in floor %}
+                {% if wdw[1] %}
+                    <button class="wdw" style="background-color: yellow;">{{wdw[0]}}</button>
+                {% else %}
+                    <button class="wdw" style="background-color: grey;">{{wdw[0]}}</button>
+                {% endif %}
+            {% endfor %}
+            <br/>
+        {% endfor %}
+        <p>Количество комнат: {{date_data["rooms_cnt"]}}</p>
+        <p>Свет горит в: {{date_data["has_light"]}}</p>
+    </div>
+{% endfor %}
+
+{% endblock %}

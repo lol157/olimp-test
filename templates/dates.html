@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+
+{% block style %}
+{% endblock %}
+
+{% block children_page %}
+
+<h1>Отображение по датам:</h1>
+<div>
+    <form method="post">
+        <button type="submit" name="date" value="all_dates">По всем датам</button>
+        <br/>
+
+        {% for date in dates %}
+            <button type="submit" name="date" value="{{ date }}">{{ date }}</button>
+            <br/>
+        {% endfor %}
+    </form>
+</div>
+
+{% endblock %}
