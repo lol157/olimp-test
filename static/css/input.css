@@ -1,0 +1,15 @@
+p {
+    font-size: 2rem;
+    font: bold;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input {
+    padding: 2rem;
+    font-size: 1rem;
+}
