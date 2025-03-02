@@ -1,42 +1,18 @@
 import requests
 from json import loads
 
-def algo():
-  day_to_indices = { }
 
-
-  for d in range(1, 8):
-    data = loads(requests.get(f"http://26.241.32.104:5001/?day=2{d}&month=02&year=25").content)["message"]
-    windows_for_room = data["windows_for_room"]["data"]
-    print(windows_for_room)
-
+def algo(data, windows_for_room):
     last_index = 0
     room = 1
     lit_rooms = []
 
-    for floors, windows in data["windows"]["data"].items():
-      print(floors, windows)
-      for i in windows_for_room:
-        if any(windows[last_index:last_index+i]):
-          lit_rooms += [room]
-        last_index += i
-        room += 1
-      last_index = 0
-    
-    day_to_indices[f"2{d}-02-25"] = lit_rooms
-  
-  return f"{day_to_indices}"
+    for floors, windows in data.items():
+        for i in windows_for_room:
+            if any(windows[last_index:last_index + i]):
+                lit_rooms.append(room)
+            last_index += i
+            room += 1
+        last_index = 0
 
-  # results = []
-
-  # for key, value in day_to_indices.items():
-  #   post_request = {
-  #     "data": {
-  #       "count": len(value),
-  #       "rooms": value
-  #     },
-  #     "date": key
-  #   }
-  #   results += [requests.post("http://26.241.32.104:5001", json=post_request).status_code]
-
-  # return f"<p>{results}</p>"
+    return lit_rooms
