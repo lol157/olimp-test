@@ -9,8 +9,8 @@ def root():
   day_to_indices = { }
 
 
-  for i in range(1, 8):
-    data = loads(requests.get(f"http://26.241.32.104:5001/?day=2{i}&month=02&year=25").content)["message"]
+  for d in range(1, 8):
+    data = loads(requests.get(f"http://26.241.32.104:5001/?day=2{d}&month=02&year=25").content)["message"]
     windows_for_room = data["windows_for_room"]["data"]
     print(windows_for_room)
 
@@ -27,7 +27,7 @@ def root():
         room += 1
       last_index = 0
     
-    day_to_indices[f"2{i}-02-25"] = lit_rooms
+    day_to_indices[f"2{d}-02-25"] = lit_rooms
   
   return f"{day_to_indices}"
 
