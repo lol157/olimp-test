@@ -1,11 +1,14 @@
 {% extends 'index.html' %}
 
 {% block head %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dates.css') }}">
+
 {% endblock %}
 
 {% block children_page %}
 
-<h1>Отображение по датам:</h1>
+<h2>Отображение по датам:</h2>
 <div>
     <form method="post">
         <button type="submit" name="date" value="all_dates">По всем датам</button>

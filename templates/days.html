@@ -1,26 +1,33 @@
 {% extends 'index.html' %}
 
 {% block head %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/days.css') }}">
+
 {% endblock %}
 
 {% block children_page %}
 
 {% for date, date_data in data.items() %}
-    <div>
-        <h3>дата: {{date}}</h3>
-        {% for floor in date_data["windows"] %}
-            {% for wdw in floor %}
-                {% if wdw[1] %}
-                    <button class="wdw" style="background-color: yellow;">{{wdw[0]}}</button>
-                {% else %}
-                    <button class="wdw" style="background-color: grey;">{{wdw[0]}}</button>
-                {% endif %}
+    <div class="one_date">
+        <h3>Дата: {{date}}</h3>
+        
+        <div class="windows">
+            {% for floor in date_data["windows"] %}
+                {% for wdw in floor %}
+                    {% if wdw[1] %}
+                        <button class="wdw" style="background-color: yellow;">{{wdw[0]}}</button>
+                    {% else %}
+                        <button class="wdw" style="background-color: grey;">{{wdw[0]}}</button>
+                    {% endif %}
+                {% endfor %}
+                <br/>
             {% endfor %}
-            <br/>
-        {% endfor %}
-        <p>Количество комнат: {{date_data["rooms_cnt"]}}</p>
-        <p>Свет горит в: {{date_data["has_light"]}}</p>
-        <p>Корректно: {{date_data["is_correct"]}}</p>
+        </div>
+
+        <label>Количество комнат: {{date_data["rooms_cnt"]}}</label><br/>
+        <label>Свет горит в: {{date_data["has_light"]}}</label><br/>
+        <label>Корректно: {{date_data["is_correct"]}}</labelp><br/>
     </div>
 {% endfor %}
 
